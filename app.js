@@ -48,7 +48,7 @@ async function startSurvey(userId, nombre) {
 client.on("message", async (message) => {
   const userId = message.from;
   const nombre =
-    message._data?.notifyName || message._data?.pushname || "María";
+    message._data?.notifyName || message._data?.pushname || "${nombre}";
   const text = message.body.trim();
 
   // Inicializar estado si es nuevo usuario o si ya terminó la encuesta
@@ -98,7 +98,7 @@ client.on("message", async (message) => {
           "3. No tengo tiempo\n" +
           "4. No me interesa\n" +
           "5. No puedo tener bebés\n\n" +
-          `María, en el momento que consideres necesario puedes acercarte a tu IPS o comunicarte al número 3004568909 y solicitar una cita de planificación familiar completamente gratuita. Recuerda que estamos para acompañarte en todo momento.`
+          `${nombre}, en el momento que consideres necesario puedes acercarte a tu IPS o comunicarte al número 3004568909 y solicitar una cita de planificación familiar completamente gratuita. Recuerda que estamos para acompañarte en todo momento.`
       );
     } else {
       await client.sendMessage(
@@ -124,7 +124,7 @@ client.on("message", async (message) => {
       userState.finished = true;
       await client.sendMessage(
         userId,
-        `María, en el momento que consideres necesario puedes acercarte a tu IPS o comunicarte al número 3004568909 y solicitar una cita de planificación familiar completamente gratuita, recuerda que estamos para acompañarte en todo momento.`
+        `${nombre}, en el momento que consideres necesario puedes acercarte a tu IPS o comunicarte al número 3004568909 y solicitar una cita de planificación familiar completamente gratuita, recuerda que estamos para acompañarte en todo momento.`
       );
     } else {
       await client.sendMessage(
@@ -215,7 +215,7 @@ client.on("message", async (message) => {
       userState.finished = true;
       await client.sendMessage(
         userId,
-        `María, en los próximos 5 días tu IPS te contactará para asignarte una cita de planificación familiar en el que podrás elegir un método anticonceptivo para evitar embarazos no planeados.`
+        `${nombre}, en los próximos 5 días tu IPS te contactará para asignarte una cita de planificación familiar en el que podrás elegir un método anticonceptivo para evitar embarazos no planeados.`
       );
     } else {
       await client.sendMessage(
@@ -234,7 +234,7 @@ client.on("message", async (message) => {
       userState.finished = true;
       await client.sendMessage(
         userId,
-        `María, recuerda que debes cumplir con todos los controles y recomendaciones que tu médico te entregó. Si requieres continuar con tu proceso de atención, puedes comunicarte al 3004568909 y solicitar una cita completamente gratuita en tu IPS de atención.\n` +
+        `${nombre}, recuerda que debes cumplir con todos los controles y recomendaciones que tu médico te entregó. Si requieres continuar con tu proceso de atención, puedes comunicarte al 3004568909 y solicitar una cita completamente gratuita en tu IPS de atención.\n` +
           `En caso de que no hayas cumplido con todas las citas asignadas, tu IPS de atención te contactará en los próximos 5 días para asignarte las citas que sean pertinentes.`
       );
     } else if (text === "2") {
@@ -243,7 +243,7 @@ client.on("message", async (message) => {
       userState.finished = true;
       await client.sendMessage(
         userId,
-        `María, en los próximos 5 días tu IPS te contactará para asignarte una cita de atención preconcepcional que nos permitirá evaluar tu estado de salud y prepararte para un embarazo saludable.\n` +
+        `${nombre}, en los próximos 5 días tu IPS te contactará para asignarte una cita de atención preconcepcional que nos permitirá evaluar tu estado de salud y prepararte para un embarazo saludable.\n` +
           `Recuerda que en cualquier momento que lo desees puedes acercarte a tu IPS o comunicarte al número 3004568909 y solicitar una cita completamente gratuita en tu IPS de atención.`
       );
     } else {
